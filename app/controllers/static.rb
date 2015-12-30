@@ -25,5 +25,6 @@ get '/:short_url' do
 	puts "[LOG] Getting /:short_url"
 	puts "[LOG] Params: #{params.inspect}"
 	@url = Url.find_by(short_url: params[:short_url])
+	@url.count
 	redirect to(@url.long_url)
 end
