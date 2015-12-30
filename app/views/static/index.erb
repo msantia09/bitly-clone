@@ -1,2 +1,22 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<title>Shorten-ly</title>
+<h1 align="center">Shorten-ly</h1>
+
+<p id="loading"></p>
+	<div class="banner b01 center">
+	  <p id = "p01" align = "center">Simplifying the URL</p>
+
+	  <form action="/urls" method ="post" style="text-align: center">
+		
+	  <label for="input">Enter URL:</label>
+		<input id="input" title="The URL that you want to shorten!" type="text" name="long_url">
+		<input id="submitbutton" type="submit" value="Shorten it!">
+	  </form>
+	</div>
+
+
+	<div id="shorturl"></div>
+		<% if @urls.any? %><br>
+			Shortened URL : <a href="<%= @urls.last.long_url %>"><%= @urls.last.short_url %></a><br>
+			Long url : <a id="longurl" href="<%= @urls.last.long_url %>"><%=@urls.last.long_url %></a>
+			<input id="dnsbutton1" type="submit" value="Hide Me">
+		<% end %>
