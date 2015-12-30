@@ -17,6 +17,25 @@
 	<div id="shorturl"></div>
 		<% if @urls.any? %><br>
 			Shortened URL : <a href="<%= @urls.last.long_url %>"><%= @urls.last.short_url %></a><br>
-			Long url : <a id="longurl" href="<%= @urls.last.long_url %>"><%=@urls.last.long_url %></a>
+			Long url : <a id="longurl" href="<%= @urls.last.long_url %>"><%=@urls.last.long_url    %></a>
 			<input id="dnsbutton1" type="submit" value="Hide Me">
 		<% end %>
+
+	<div id="table">
+		<table id="table1" style="width:80%" border="1" align="center">
+		<tr>
+  		<th>No.</th>
+  		<th>Long Url</th>
+  		<th>Short Url</th>
+  		<th>Click Count</th>
+		</tr>
+		<% @urls.each_with_index do |url,idx| %>
+		<tr>
+			<td><%= idx+1 %>.</td>
+			<td><%= url.long_url %></td>
+			<td><a href=<%=url.short_url%>><%= url.short_url %></a></td>
+			<td><%= url.click_count %></td>
+		<tr>
+		<% end %>
+	</table>
+</div>
